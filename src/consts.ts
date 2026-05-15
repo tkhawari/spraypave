@@ -1,5 +1,2 @@
-// Place any global data in this file.
-// You can import this data from anywhere in your site by using the `import` keyword.
-
-export const SITE_TITLE = 'Astro Blog';
-export const SITE_DESCRIPTION = 'Welcome to my website!';
+export const SITE_TITLE = 'Illawarra Spray Pave';
+export const SITE_DESCRIPTION = 'Premium spray paving for driveways, patios and pool surrounds across the Illawarra, Shoalhaven and Southern Highlands. Family-run, 20 years of NSW concreting experience.';
