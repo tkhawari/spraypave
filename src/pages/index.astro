@@ -1,49 +1,318 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Footer from '../components/Footer.astro';
-import Header from '../components/Header.astro';
-import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+import Layout from '../layouts/Layout.astro';
+import Button from '../components/Button.astro';
+import { Image } from 'astro:assets';
+import { SITE_DESCRIPTION } from '../consts';
+
+const services = [
+  {
+    name: 'Driveways',
+    description: 'A fresh surface that holds up to daily traffic, oil and UV — and lifts your street appeal instantly.',
+    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80',
+    alt: 'Clean modern residential driveway with spray paved surface',
+  },
+  {
+    name: 'Patios',
+    description: 'Non-slip, easy-clean finishes that make outdoor living areas feel like a natural extension of your home.',
+    image: 'https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=600&q=80',
+    alt: 'Paved patio with outdoor furniture in a residential backyard',
+  },
+  {
+    name: 'Pool surrounds',
+    description: 'Slip-resistant surfaces designed to handle constant water, bare feet and harsh chemical exposure.',
+    image: 'https://images.unsplash.com/photo-1575429198097-0414ec08e8cd?w=600&q=80',
+    alt: 'Swimming pool with clean spray paved surrounds',
+  },
+  {
+    name: 'Courtyards',
+    description: 'Tight spaces where quality finishes matter most — we work neatly and leave the area immaculate.',
+    image: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=600&q=80',
+    alt: 'Courtyard with decorative paved surface',
+  },
+  {
+    name: 'Garage floors',
+    description: 'Hard-wearing surfaces that resist tyre marks, oil drips and heavy loads — without the cold grey look of raw concrete.',
+    image: 'https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=600&q=80',
+    alt: 'Clean finished garage floor surface',
+  },
+  {
+    name: 'Pathways',
+    description: 'Defined paths that guide visitors, improve drainage and reduce weed growth between your garden beds.',
+    image: 'https://images.unsplash.com/photo-1503174971373-b1f69850bded?w=600&q=80',
+    alt: 'Smooth paved garden pathway through landscaped garden',
+  },
+  {
+    name: 'Commercial carparks',
+    description: 'Durable, line-ready surfaces for retail centres, strata buildings and industrial properties.',
+    image: 'https://images.unsplash.com/photo-1506521781263-d8422e82f27a?w=600&q=80',
+    alt: 'Commercial carpark with smooth paved surface',
+  },
+  {
+    name: 'Factory floors',
+    description: 'Industrial-grade finishes that can handle forklifts, heavy machinery and chemical spills.',
+    image: 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=600&q=80',
+    alt: 'Clean factory floor with industrial concrete finish',
+  },
+  {
+    name: 'Epoxy flooring',
+    description: 'A high-gloss, seamless finish that transforms garages, showrooms and commercial spaces.',
+    image: 'https://images.unsplash.com/photo-1631556942898-f0742b9cf1a3?w=600&q=80',
+    alt: 'High-gloss epoxy floor finish in a commercial space',
+  },
+];
+
+const suburbs = [
+  'Wollongong', 'Thirroul', 'Bulli', 'Corrimal',
+  'Fairy Meadow', 'Shellharbour', 'Albion Park', 'Kiama',
+  'Gerringong', 'Berry', 'Nowra', 'Bomaderry',
+  'Bowral', 'Mittagong', 'Moss Vale', 'Robertson',
+];
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-	</head>
-	<body>
-		<Header />
-		<main>
-			<h1>🧑‍🚀 Hello, Astronaut!</h1>
-			<p>
-				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This template
-				serves as a lightweight, minimally-styled starting point for anyone looking to build a personal
-				website, blog, or portfolio with Astro.
-			</p>
-			<p>
-				This template comes with a few integrations already configured in your
-				<code>astro.config.mjs</code> file. You can customize your setup with
-				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like Tailwind,
-				React, or Vue to your project.
-			</p>
-			<p>Here are a few ideas on how to get started with the template:</p>
-			<ul>
-				<li>Edit this page in <code>src/pages/index.astro</code></li>
-				<li>Edit the site header items in <code>src/components/Header.astro</code></li>
-				<li>Add your name to the footer in <code>src/components/Footer.astro</code></li>
-				<li>Check out the included blog posts in <code>src/content/blog/</code></li>
-				<li>Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code></li>
-			</ul>
-			<p>
-				Have fun! If you get stuck, remember to
-				<a href="https://docs.astro.build/">read the docs</a>
-				or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-			</p>
-			<p>
-				Looking for a blog template with a bit more personality? Check out
-				<a href="https://github.com/Charca/astro-blog-template">astro-blog-template</a>
-				by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
-		</main>
-		<Footer />
-	</body>
-</html>
+<Layout description={SITE_DESCRIPTION}>
+  <!-- Hero -->
+  <section class="py-24 md:py-32">
+    <div class="max-w-6xl mx-auto px-6 md:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
+        <!-- Text -->
+        <div>
+          <p class="text-sm font-inter font-medium uppercase tracking-widest text-mute mb-6">
+            Illawarra · Shoalhaven · Southern Highlands
+          </p>
+          <h1
+            class="font-fraunces font-medium text-4xl md:text-6xl text-ink tracking-tight leading-[1.05] mb-6"
+          >
+            Premium spray paving for driveways, patios and pool surrounds.
+          </h1>
+          <p class="font-inter text-base md:text-lg text-char leading-relaxed mb-8">
+            Transform tired concrete into a beautiful, durable surface. We're the spray-paving arm
+            of a family-run NSW concreting business with 20 years of experience — and that depth
+            shows in every job.
+          </p>
+          <div class="flex flex-wrap gap-4 mb-6">
+            <Button href="/contact" variant="primary">Get a free quote</Button>
+            <Button href="/gallery" variant="secondary">See our work</Button>
+          </div>
+          <p class="text-sm font-inter text-mute">
+            Free on-site consultation · 5-year warranty · Fully insured
+          </p>
+        </div>
+
+        <!-- Image -->
+        <div>
+          <!-- TODO: replace with real Illawarra Spray Pave project photo -->
+          <Image
+            src="https://images.unsplash.com/photo-1604147495798-57beb5d6af73?w=1200&q=80"
+            width={1200}
+            height={900}
+            alt="Modern home exterior with a clean spray paved driveway"
+            class="w-full aspect-[4/3] rounded-sm object-cover"
+            loading="eager"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services overview -->
+  <section class="py-20 md:py-28 bg-paper">
+    <div class="max-w-6xl mx-auto px-6 md:px-8">
+      <p class="text-sm font-inter font-medium uppercase tracking-widest text-mute mb-4">
+        What we do
+      </p>
+      <h2 class="font-fraunces font-medium text-3xl md:text-4xl text-ink tracking-tight mb-6">
+        Spray paving for residential and commercial spaces.
+      </h2>
+      <p class="font-inter text-base md:text-lg text-char leading-relaxed max-w-2xl mb-12">
+        We resurface and protect concrete across nine common applications. Each job starts with an
+        honest assessment of your existing slab — because spray paving works best when the surface
+        beneath it is sound.
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {
+          services.map((service) => (
+            <article class="bg-bone border border-line hover:border-clay transition-colors rounded-sm overflow-hidden group">
+              <!-- TODO: replace with real project photo -->
+              <img
+                src={service.image}
+                alt={service.alt}
+                class="w-full aspect-[4/3] object-cover"
+                loading="lazy"
+                width="600"
+                height="450"
+              />
+              <div class="p-6">
+                <h3 class="font-fraunces font-medium text-xl text-ink mb-2">{service.name}</h3>
+                <p class="font-inter text-sm text-char leading-relaxed mb-4">
+                  {service.description}
+                </p>
+                <a
+                  href="/services"
+                  class="text-sm font-medium text-clay hover:text-clay-dark transition-colors no-underline focus-visible:outline-2 focus-visible:outline-clay focus-visible:outline-offset-2 rounded-sm"
+                >
+                  Learn more →
+                </a>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+
+      <div class="mt-12 text-center">
+        <Button href="/services" variant="secondary">View all services</Button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why us -->
+  <section class="py-20 md:py-28">
+    <div class="max-w-6xl mx-auto px-6 md:px-8">
+      <p class="text-sm font-inter font-medium uppercase tracking-widest text-mute mb-4">
+        Why customers choose us
+      </p>
+      <h2 class="font-fraunces font-medium text-3xl md:text-4xl text-ink tracking-tight mb-6">
+        Backed by 20 years of professional concreting.
+      </h2>
+      <p class="font-inter text-base md:text-lg text-char leading-relaxed max-w-2xl mb-12">
+        Most spray pavers are just spray pavers. We're concreters first — which means we understand
+        what's happening beneath the surface, not just on top of it. That changes the quality of
+        every recommendation we make.
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+        <!-- Pillar 1: Trade depth -->
+        <div>
+          <div class="mb-4 text-clay">
+            <svg
+              width="32"
+              height="32"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M2 20h20"></path>
+              <path d="M5 20V8l7-5 7 5v12"></path>
+              <path d="M9 20v-5h6v5"></path>
+              <circle cx="12" cy="10" r="1"></circle>
+            </svg>
+          </div>
+          <h3 class="font-fraunces font-medium text-xl md:text-2xl text-ink mb-3">
+            Real trade depth
+          </h3>
+          <p class="font-inter text-base text-char leading-relaxed">
+            A family-run NSW concreting business with 20 years of experience. We bring those
+            standards to every spray paving job.
+          </p>
+        </div>
+
+        <!-- Pillar 2: Honest assessment -->
+        <div>
+          <div class="mb-4 text-clay">
+            <svg
+              width="32"
+              height="32"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path
+                d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"
+              ></path>
+              <rect x="9" y="3" width="6" height="4" rx="1"></rect>
+              <path d="M9 12h6"></path>
+              <path d="M9 16h4"></path>
+            </svg>
+          </div>
+          <h3 class="font-fraunces font-medium text-xl md:text-2xl text-ink mb-3">
+            Honest assessment
+          </h3>
+          <p class="font-inter text-base text-char leading-relaxed">
+            Spray paving is a surface treatment. We inspect your slab first and tell you what's
+            possible — and what isn't — before quoting.
+          </p>
+        </div>
+
+        <!-- Pillar 3: Insured and licensed -->
+        <div>
+          <div class="mb-4 text-clay">
+            <svg
+              width="32"
+              height="32"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            </svg>
+          </div>
+          <h3 class="font-fraunces font-medium text-xl md:text-2xl text-ink mb-3">
+            Fully insured, fully licensed
+          </h3>
+          <p class="font-inter text-base text-char leading-relaxed">
+            Operating under our family's NSW concreting licence. Comprehensive insurance on every
+            job.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Service area -->
+  <section class="py-20 md:py-28 bg-paper">
+    <div class="max-w-6xl mx-auto px-6 md:px-8">
+      <p class="text-sm font-inter font-medium uppercase tracking-widest text-mute mb-4">
+        Where we work
+      </p>
+      <h2 class="font-fraunces font-medium text-3xl md:text-4xl text-ink tracking-tight mb-10">
+        Servicing the Illawarra, Shoalhaven and Southern Highlands.
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+        <p class="font-inter text-base md:text-lg text-char leading-relaxed">
+          We cover a broad region across NSW's South Coast and Highlands. If you're outside this
+          area for a larger project, get in touch — we travel for the right job.
+        </p>
+
+        <div class="flex flex-wrap gap-2">
+          {
+            suburbs.map((suburb) => (
+              <span class="border border-line px-4 py-2 rounded-full text-sm font-inter text-char bg-bone">
+                {suburb}
+              </span>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Closing CTA -->
+  <section class="py-24 md:py-32">
+    <div class="max-w-6xl mx-auto px-6 md:px-8 text-center">
+      <h2 class="font-fraunces font-medium text-3xl md:text-4xl text-ink tracking-tight mb-6">
+        Get a free quote, on-site.
+      </h2>
+      <p class="font-inter text-base md:text-lg text-char leading-relaxed max-w-xl mx-auto mb-10">
+        We'll inspect your concrete, talk through finish options, and give you an honest fixed
+        price. No obligation.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <Button href="tel:[PHONE_NUMBER]" variant="primary">Call [PHONE_NUMBER]</Button>
+        <Button href="/contact" variant="secondary">Send a message</Button>
+      </div>
+    </div>
+  </section>
+</Layout>
